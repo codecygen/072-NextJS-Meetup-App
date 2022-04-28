@@ -1,7 +1,5 @@
 // our-domain.com
 
-import { useEffect, useState } from 'react';
-
 import MeetupList from '../components/meetups/MeetupList';
 
 const DUMMY_MEETUPS = [
@@ -22,17 +20,22 @@ const DUMMY_MEETUPS = [
     }
 ];
 
-const HomePage = () => {
-    const [loadedMeetups, setLoadedMeetups] = useState([]);
-
-    useEffect(() => {
-        // Fetch data
-        setLoadedMeetups(DUMMY_MEETUPS);
-    }, []);
-
+const HomePage = props => {
     return (
-        <MeetupList meetups={loadedMeetups} />
+        // Next-Data-Fetching-For-Static-Pages-getStaticProps()
+        <MeetupList meetups={props.meetups} />
     );
+};
+
+// Next-Data-Fetching-For-Static-Pages-getStaticProps()
+// getStaticProps is a reserved name.Next.js will look for this
+// function and executes it during the pre-rendering process.
+export const getStaticProps = async () => {
+    return {
+        props: {
+          meetups: DUMMY_MEETUPS  
+        }
+    };
 };
 
 export default HomePage;
