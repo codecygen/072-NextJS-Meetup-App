@@ -22,20 +22,45 @@ const DUMMY_MEETUPS = [
 
 const HomePage = props => {
     return (
-        // Next-Data-Fetching-For-Static-Pages-getStaticProps()
+        // Next-Data-Fetching-For-Static-Pages-getStaticProps()-SSG-Static-Site-Generation
         <MeetupList meetups={props.meetups} />
     );
 };
 
-// Next-Data-Fetching-For-Static-Pages-getStaticProps()
-// getStaticProps is a reserved name.Next.js will look for this
+// Next-Data-Fetching-For-Static-Pages-getStaticProps()-SSG-Static-Site-Generation
+// getStaticProps is a reserved name. Next.js will look for this
 // function and executes it during the pre-rendering process.
 export const getStaticProps = async () => {
+    // fetch data from an API
+
     return {
         props: {
-          meetups: DUMMY_MEETUPS  
-        }
+            meetups: DUMMY_MEETUPS
+        },
+        // revalidate property allows incremental static generation
+        // when you write revalidate: 10 it means the page will be regenerated
+        // every 1 seconds statically.
+        revalidate: 1
     };
 };
+
+// // Next-Data-Fetching-For-Static-Pages-ServerSideProps()-SSR-Server-Side-Rendering
+// // getServerSideProp is a reserved name. Next.js will look for this function and
+// // executes it on the server side. This function is good if your database is updating
+// // really frequently and in case you want to reach out to request and response's from the server
+// // you need this function.
+// export const getServerSideProps = async (context) => {
+//     const req = context.req;
+//     const res = context.res;
+
+//     // fetch data from an API
+//     return {
+//         props: {
+//             meetups: DUMMY_MEETUPS
+//         }
+
+//         // revalidate is not a return object key for this type of rendering
+//     };
+// };
 
 export default HomePage;

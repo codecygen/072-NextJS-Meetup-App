@@ -7,7 +7,10 @@ Keywords:
 - Next-Dynamic-Routing-Folder-Method
 - Next-Including-Special-Component-To-Wrap-All-Components
 - Next-ReRouting-To-Other-Dynamic-Or-Static-Link-useRouter-Hook
-- Next-Data-Fetching-For-Static-Pages-getStaticProps()
+- Next-Data-Fetching-For-Static-Pages-getStaticProps()-SSG-Static-Site-Generation
+- Next-Data-Fetching-For-Static-Pages-ServerSideProps()-SSR-Server-Side-Rendering
 
 Highlights:
-getStaticProps is good for SEO. getStaticProps is a reserved name.Next.js will look for this function and executes it during the pre-rendering process and prepare the HTML file with data instead of rendering it inside the client's browser.
+- getStaticProps is good for SEO. getStaticProps is a reserved name.Next.js will look for this function and executes it during the pre-rendering process and prepare the HTML file with data instead of rendering it inside the client's browser.
+
+- getServerSideProp is a reserved name. Next.js will look for this function and executes it on the server side. This function is good if your database is updating really frequently and in case you want to reach out to request and response's from the server you need this function. HTML data will be loaded on the client which will be also good for SEO.
