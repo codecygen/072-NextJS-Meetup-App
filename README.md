@@ -6,3 +6,4 @@ You can use "_app.js" file to wrap a component which is expected to appear in al
 Keywords:
 - Next-Dynamic-Routing-Folder-Method
 - Next-Including-Special-Component-To-Wrap-All-Components
+- Next-ReRouting-To-Other-Dynamic-Or-Static-Link-useRouter-Hook

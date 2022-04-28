@@ -1,7 +1,18 @@
+// Next-ReRouting-To-Other-Dynamic-Or-Static-Link-useRouter-Hook
+import { useRouter } from 'next/router';
+
 import Card from '../ui/Card';
 import classes from './MeetupItem.module.css';
 
 function MeetupItem(props) {
+  // Next-ReRouting-To-Other-Dynamic-Or-Static-Link-useRouter-Hook
+  const router = useRouter();
+
+  const showDetailsHandler = () => {
+    // Next-ReRouting-To-Other-Dynamic-Or-Static-Link-useRouter-Hook
+    router.push(`/${props.id}`);
+  };
+
   return (
     <li className={classes.item}>
       <Card>
@@ -13,7 +24,8 @@ function MeetupItem(props) {
           <address>{props.address}</address>
         </div>
         <div className={classes.actions}>
-          <button>Show Details</button>
+          {/* Next-ReRouting-To-Other-Dynamic-Or-Static-Link-useRouter-Hook */}
+          <button onClick={showDetailsHandler}>Show Details</button>
         </div>
       </Card>
     </li>
