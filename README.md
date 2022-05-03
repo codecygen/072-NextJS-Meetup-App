@@ -8,6 +8,8 @@ Keywords:
 - Next-Including-Special-Component-To-Wrap-All-Components
 - Next-ReRouting-To-Other-Dynamic-Or-Static-Link-useRouter-Hook
 - Next-Data-Fetching-For-Static-Pages-getStaticProps()-SSG-Static-Site-Generation
+- Next-Getting-Access-To-Dynamic-Link-Params-In-getStaticProps()-SSG-Static-Site-Generation-Alternative-To-useRouter-Hook-Dynamic-Link-Parameter-Extraction
+- NextgetStaticPathsNeededIfFileIsDynamicComponentFileAndgetStaticPropsFunctionIsUsed
 - Next-Data-Fetching-For-Static-Pages-ServerSideProps()-SSR-Server-Side-Rendering
 
 Highlights:
