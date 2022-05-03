@@ -16,9 +16,9 @@ const MeetupDetails = () => {
     );
 };
 
-// NextgetStaticPathsNeededIfFileIsDynamicComponentFileAndgetStaticPropsFunctionIsUsed
+// Next-getStatic-Paths-Needed-If-File-Is-Dynamic-Component-File-And-getStaticProps-Function-Is-Used
 // This section is needed because, Next.js needs to pregenerate the dynamic page paths.
-// Here we have to list all dynamic paths.
+// and needed if we are also using getStaticProps functions Here we have to list all dynamic paths.
 export const getStaticPaths = async () => {
     return {
         // fallback parameter tells Next.js what to do in case the all paths are not
