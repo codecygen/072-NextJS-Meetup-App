@@ -1,5 +1,7 @@
 Next.js Meetup App, new meetup can be added and displayed.
 
+For this app, mongodb has to be installed as it will use MongoDB Atlas.
+
 Rule,
 You can use "_app.js" file to wrap a component which is expected to appear in all of your app. For example you want to include a navbar you can add it in here. For more detail search for "Next-Including-Special-Component-To-Wrap-All-Components" keyword.
 
