@@ -5,11 +5,9 @@
 import { MongoClient } from "mongodb";
 
 // Often time, the function name is called handler but the name is up to you
-const handler = (req, res) => {
+const handler = async (req, res) => {
     if (req.method = 'POST') {
         const data = req.body;
-
-        const { title, image, address, description } = data;
 
         // Next-Env-Variables-For-Server-Side
         // Next-MongoDB-Atlas
@@ -23,9 +21,33 @@ const handler = (req, res) => {
         const meetupsDatabase = 'meetups';
 
         // Next-MongoDB-Atlas
-        // The link is taken from MongoDB Atlas
+        // The link is taken from MongoDB Atlas and the content is adjusted
         const mongoAtlasLink = `mongodb+srv://${mongoUser}:${mongoPassword}@meetup-list.jagjq.mongodb.net/${meetupsDatabase}?retryWrites=true&w=majority`;
-        MongoClient.connect(mongoAtlasLink);
+        
+        // Next-MongoDB-Atlas
+        // Since connect returns a promise, parent function should be an async function
+        const client = await MongoClient.connect(mongoAtlasLink);
+
+        // Next-MongoDB-Atlas
+        // We get the meetups database here. If it does not exist, it will be created on the fly.
+        const db = client.db();
+
+        // Next-MongoDB-Atlas
+        // We get the collections database here. If it does not exist, it will be created on the fly.
+        const meetupsCollection = db.collection('meetups');
+
+        // Next-MongoDB-Atlas
+        // we can add a try and catch for error handling if we want to
+        // I will skip it in here.
+        const result = await meetupsCollection.insertOne(data);
+
+        // Next-MongoDB-Atlas
+        console.log(result);
+
+        // Next-MongoDB-Atlas
+        client.close();
+
+        res.status(201).json({ message: 'Meetup Inserted!' });
     }
 };
 
