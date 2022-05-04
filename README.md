@@ -35,5 +35,6 @@ Highlights:
 
 ```
 // .env.local
-MONGODB_ATLAS_PASSWORD="myExamplePassword"
+MONGODB_ATLAS_USER="example-user"
+MONGODB_ATLAS_PASSWORD="example-pass"
 ```
