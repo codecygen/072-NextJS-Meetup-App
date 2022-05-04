@@ -16,14 +16,15 @@ const handler = (req, res) => {
         // In the root of the project env file is named as ".env.local"
         // Make sure that file is excluded in ".gitignore" file.
         // Remember that this environmental variable can only be accessed in backend.
-        const mongoPassword=process.env.MONGODB_ATLAS_PASSWORD
+        const mongoUser=process.env.MONGODB_ATLAS_USER;
+        const mongoPassword=process.env.MONGODB_ATLAS_PASSWORD;
 
         // Next-MongoDB-Atlas
         const meetupsDatabase = 'meetups';
 
         // Next-MongoDB-Atlas
         // The link is taken from MongoDB Atlas
-        const mongoAtlasLink = `mongodb+srv://vahitaras_mongodb:${mongoPassword}@meetup-list.jagjq.mongodb.net/${meetupsDatabase}?retryWrites=true&w=majority`;
+        const mongoAtlasLink = `mongodb+srv://${mongoUser}:${mongoPassword}@meetup-list.jagjq.mongodb.net/${meetupsDatabase}?retryWrites=true&w=majority`;
         MongoClient.connect(mongoAtlasLink);
     }
 };
