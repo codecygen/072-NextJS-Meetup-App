@@ -21,6 +21,7 @@ const DUMMY_MEETUPS = [
 ];
 
 const HomePage = props => {
+
     return (
         // Next-Data-Fetching-For-Static-Pages-getStaticProps()-SSG-Static-Site-Generation
         <MeetupList meetups={props.meetups} />

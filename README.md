@@ -14,6 +14,8 @@ Keywords:
 - Next-getStatic-Paths-Needed-If-File-Is-Dynamic-Component-File-And-getStaticProps-Function-Is-Used
 - Next-Data-Fetching-For-Static-Pages-ServerSideProps()-SSR-Server-Side-Rendering
 - Next-Backend-Files-Folder-For-API-Functions-Reserved-Name-Folder-Called-api-Folder
+- Next-MongoDB-Atlas
+- Next-Env-Variables-For-Server-Side
 
 Highlights:
 - getStaticProps is good for SEO. getStaticProps is a reserved name.Next.js will look for this function and executes it during the pre-rendering process and prepare the HTML file with data instead of rendering it inside the client's browser.
@@ -23,3 +25,12 @@ Highlights:
 - getStaticPaths is a reserved name. This section is needed because, Next.js needs to pregenerate the dynamic page paths and needed if we are also using getStaticProps functions. Under this function, we have to list all dynamic paths.
 
 - Special Backend Folder For API Routes: This folder adds API routes and endpoints, Next.js needs a special folder under the "pages" folder. The name of the file must be named as "api" folder. Under that folder, we can add javascript files which can act as path segments in the URL. Remember that the files under this folder will be treated as backend files so we can use special keys under this path if needed.
+
+- MongoDB Atlas is used in this project.
+
+- Environmental variable file is named as ".env.local" and stored in the root directory of the project. The file is excluded in ".gitignore" and the variables inside can only be accessed by the Backend files folder "/pages/api/*". The example content of the .env.local file is given down below.
+
+```
+// .env.local
+MONGODB_ATLAS_PASSWORD="myExamplePassword"
+```
