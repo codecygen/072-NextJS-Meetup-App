@@ -1,6 +1,5 @@
 // Next-Backend-Files-Folder-For-API-Functions-Reserved-Name-Folder-Called-api-Folder
 // This file is treated as a backend server file in Next.js.
-// Only POST requests triggered in this api file.
 
 // Next-MongoDB-Insert-Data
 // This is the file which controls inserting data to database
