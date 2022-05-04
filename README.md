@@ -18,6 +18,7 @@ Keywords:
 - Next-Backend-Files-Folder-For-API-Functions-Reserved-Name-Folder-Called-api-Folder
 - Next-MongoDB-Atlas
 - Next-Env-Variables-For-Server-Side
+- Next-MongoDB-Insert-Data
 
 Highlights:
 - getStaticProps is good for SEO. getStaticProps is a reserved name.Next.js will look for this function and executes it during the pre-rendering process and prepare the HTML file with data instead of rendering it inside the client's browser.

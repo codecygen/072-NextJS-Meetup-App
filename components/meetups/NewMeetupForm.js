@@ -17,6 +17,7 @@ function NewMeetupForm(props) {
     const enteredAddress = addressInputRef.current.value;
     const enteredDescription = descriptionInputRef.current.value;
 
+    // Next-MongoDB-Insert-Data
     const meetupData = {
       title: enteredTitle,
       image: enteredImage,
@@ -24,11 +25,14 @@ function NewMeetupForm(props) {
       description: enteredDescription,
     };
 
+    // Next-MongoDB-Insert-Data
+    // Hoists meetupData to /pages/new-meetup/index.js file
     props.onAddMeetup(meetupData);
   }
 
   return (
     <Card>
+      {/* Next-MongoDB-Insert-Data */}
       <form className={classes.form} onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor='title'>Meetup Title</label>
