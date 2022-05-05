@@ -10,6 +10,8 @@ function MeetupItem(props) {
 
   const showDetailsHandler = () => {
     // Next-ReRouting-To-Other-Dynamic-Or-Static-Link-useRouter-Hook
+    // with push() method we can go back.
+    // with replace() method we cannot go back.
     router.push(`/${props.id}`);
   };
 
