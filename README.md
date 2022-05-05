@@ -19,6 +19,7 @@ Keywords:
 - Next-MongoDB-Atlas
 - Next-Env-Variables-For-Server-Side
 - Next-MongoDB-Insert-Data
+- Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()
 
 Highlights:
 - getStaticProps is good for SEO. getStaticProps is a reserved name.Next.js will look for this function and executes it during the pre-rendering process and prepare the HTML file with data instead of rendering it inside the client's browser.
@@ -38,3 +39,5 @@ Highlights:
 MONGODB_ATLAS_USER="example-user"
 MONGODB_ATLAS_PASSWORD="example-pass"
 ```
+
+- Codes inside the getStaticProps() and getServerSideProps() are also not exposed on the client side in a Next.js app. Sometimes it could be necessary to eliminate an extra HTTP request to the backend. When you include MongoClient library in front end file, despite it is included in front end file, it will be bundled as backend library by Next.js for security purposes. This is a smart feature for Next.js

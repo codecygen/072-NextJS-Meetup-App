@@ -1,24 +1,9 @@
 // our-domain.com
 
+// Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()
+import { MongoClient } from 'mongodb';
+
 import MeetupList from '../components/meetups/MeetupList';
-
-const DUMMY_MEETUPS = [
-    {
-        id: 'm1',
-        title: 'First Meetup',
-        image: 'https://cdn.pixabay.com/photo/2014/07/01/13/52/toronto-381281_960_720.jpg',
-        address: '111 Wellesley St W, Toronto, ON M7A 1A2',
-        description: 'This is our first meetup!'
-    },
-
-    {
-        id: 'm2',
-        title: 'Second Meetup',
-        image: 'https://cdn.pixabay.com/photo/2015/11/07/11/00/toronto-city-hall-1030731_960_720.jpg',
-        address: '100 Queen St W, Toronto, ON M5H 2N2',
-        description: 'This is our second meetup!'
-    }
-];
 
 const HomePage = props => {
 
@@ -34,9 +19,43 @@ const HomePage = props => {
 export const getStaticProps = async () => {
     // fetch data from an API
 
+    // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()
+    const mongoUser = process.env.MONGODB_ATLAS_USER;
+    const mongoPassword = process.env.MONGODB_ATLAS_PASSWORD;
+
+    // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()
+    const meetupsDatabase = 'meetups';
+
+    // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()
+    // The link is taken from MongoDB Atlas and the content is adjusted
+    const mongoAtlasLink = `mongodb+srv://${mongoUser}:${mongoPassword}@meetup-list.jagjq.mongodb.net/${meetupsDatabase}?retryWrites=true&w=majority`;
+
+    // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()
+    // Since connect returns a promise, parent function should be an async function
+    const client = await MongoClient.connect(mongoAtlasLink);
+
+    // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()
+    // We get the meetups database here. If it does not exist, it will be created on the fly.
+    const db = client.db();
+
+    // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()
+    const meetupsCollection = db.collection('meetups');
+
+    // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()
+    const fetchedMeetups = await meetupsCollection.find().toArray();
+
+    // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()
+    client.close();
+
     return {
         props: {
-            meetups: DUMMY_MEETUPS
+            // description is not necessary to be shown here.
+            meetups: fetchedMeetups.map(fetchedMeetup => ({
+                title: fetchedMeetup.title,
+                address: fetchedMeetup.address,
+                image: fetchedMeetup.image,
+                id: fetchedMeetup._id.toString()
+            }))
         },
         // revalidate property allows incremental static generation
         // when you write revalidate: 10 it means the page will be regenerated
