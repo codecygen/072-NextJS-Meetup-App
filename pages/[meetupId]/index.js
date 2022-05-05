@@ -116,7 +116,7 @@ export const getStaticProps = async (context) => {
     const meetupsCollection = db.collection('meetups');
 
     // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()-Or-getStaticPaths()
-    // This returns only the id field of the entire collection as an array
+    // This filters the collections and only returns the object of the matching id.
     const selectedMeetup = await meetupsCollection.findOne({_id: ObjectId(meetupId)});
 
     // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()-Or-getStaticPaths()
@@ -125,7 +125,7 @@ export const getStaticProps = async (context) => {
     return {
         props: {
             meetupData: {
-                id: selectedMeetup._id.toHexString(),
+                id: selectedMeetup._id.toString(),
                 title: selectedMeetup.title,
                 address: selectedMeetup.address,
                 image: selectedMeetup.image,
