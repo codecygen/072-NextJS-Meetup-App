@@ -42,4 +42,4 @@ MONGODB_ATLAS_USER="example-user"
 MONGODB_ATLAS_PASSWORD="example-pass"
 ```
 
-- Codes inside the getStaticProps() and getServerSideProps() are also not exposed on the client side in a Next.js app. Sometimes it could be necessary to eliminate an extra HTTP request to the backend. When you include MongoClient library in front end file, despite it is included in front end file, it will be bundled as backend library by Next.js for security purposes. This is a smart feature for Next.js
+- Codes inside the getStaticProps() and getServerSideProps() are also not exposed on the client side in a Next.js app. Sometimes it could be necessary to eliminate an extra HTTP request to the backend. When you include MongoClient library in front end file, despite it is included in front end file, it will be bundled as backend library by Next.js for security purposes. This is a smart feature for Next.js.
