@@ -78,10 +78,23 @@ export const getStaticPaths = async () => {
 
     return {
         // fallback parameter tells Next.js what to do in case the all paths are not
-        // specified. If you set it to false, it will not generate any other page that
-        // are outside of what is described in the paths section and the app will throw
-        // a 404 error.
-        fallback: false,
+        // specified. 
+
+        // If you set it to false, it will not generate any other page that
+        // are outside of what is described in the paths section and the app will throw a 404 error.
+
+        // If you set it to true, Next first quickly returns a dummy pre-render with empty 
+        // data that had been created at build time.
+        // In this, you are expected to tell the user that the page is loading.
+        // You must handle that case, or else it could lead to exceptions being thrown due to missing properties.
+
+        // This is quite similar to fallback: true, except that it does not return the dummy 
+        // loading page when a page that hasn't been cached is hit for the first time
+        // nstead, it just makes the browser hang, until the page is rendered for the first time.
+        // Future requests to that page are quickly served from the cache however, just like fallback: true.
+
+
+        fallback: 'blocking',
         paths: fetchedMeetups.map(fetchedMeetup => ({
             params: {
                 // Here the meetupId will be used as path for "Show Details" button
