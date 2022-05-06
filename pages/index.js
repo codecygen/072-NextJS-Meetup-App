@@ -4,6 +4,9 @@
 // getStaticProps() function will return props that will display the entries that we want to show in main page.
 // props can be accessed from component function "HomePage" and then renders the page properly.
 
+// Next-Adding-Head-Tag-To-Project-For-SEO
+import Head from 'next/head';
+
 
 // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()-Or-getStaticPaths()
 import { MongoClient } from 'mongodb';
@@ -13,8 +16,16 @@ import MeetupList from '../components/meetups/MeetupList';
 const HomePage = props => {
 
     return (
-        // Next-Data-Fetching-For-Static-Pages-getStaticProps()-SSG-Static-Site-Generation
-        <MeetupList meetups={props.meetups} />
+        <>
+            {/* Next-Adding-Head-Tag-To-Project-For-SEO */}
+            <Head>
+                <title>React Meetups</title>
+                <meta name="description" content="Browse the available meetups!" />
+            </Head>
+
+            {/* Next-Data-Fetching-For-Static-Pages-getStaticProps()-SSG-Static-Site-Generation */}
+            <MeetupList meetups={props.meetups} />
+        </>
     );
 };
 

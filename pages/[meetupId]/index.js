@@ -15,6 +15,9 @@
 // here index.js can also be put inside [meetupId]
 // and can be used for dynamic routing.
 
+// Next-Adding-Head-Tag-To-Project-For-SEO-Dynamic-Title-Tag-Changes
+import Head from "next/head";
+
 // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()-Or-getStaticPaths()
 import { MongoClient, ObjectId } from "mongodb";
 
@@ -22,12 +25,20 @@ import MeetupDetail from "../../components/meetups/MeetupDetail";
 
 const MeetupDetails = props => {
     return (
-        <MeetupDetail
-            title={props.meetupData.title}
-            image={props.meetupData.image}
-            address={props.meetupData.address}
-            description={props.meetupData.description}
-        />
+        <>
+            {/* Next-Adding-Head-Tag-To-Project-For-SEO-Dynamic-Title-Tag-Changes */}
+            <Head>
+                <title>{props.meetupData.title}</title>
+                <meta name="description" content={props.meetupData.description} />
+            </Head>
+
+            <MeetupDetail
+                title={props.meetupData.title}
+                image={props.meetupData.image}
+                address={props.meetupData.address}
+                description={props.meetupData.description}
+            />
+        </>
     );
 };
 
@@ -117,7 +128,7 @@ export const getStaticProps = async (context) => {
 
     // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()-Or-getStaticPaths()
     // This filters the collections and only returns the object of the matching id.
-    const selectedMeetup = await meetupsCollection.findOne({_id: ObjectId(meetupId)});
+    const selectedMeetup = await meetupsCollection.findOne({ _id: ObjectId(meetupId) });
 
     // Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()-Or-getStaticPaths()
     client.close();

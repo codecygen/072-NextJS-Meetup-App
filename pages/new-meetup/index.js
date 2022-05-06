@@ -1,5 +1,8 @@
 // our-domain.com/new-meetup
 
+// Next-Adding-Head-Tag-To-Project-For-SEO
+import Head from "next/head";
+
 // Next-ReRouting-To-Other-Dynamic-Or-Static-Link-useRouter-Hook
 import { useRouter } from "next/router";
 
@@ -35,7 +38,15 @@ const NewMeetupPage = () => {
     };
 
     return (
-        <NewMeetupForm onAddMeetup={addMeetupHandler} />
+        <>
+            {/* Next-Adding-Head-Tag-To-Project-For-SEO */}
+            <Head>
+                <title>Add a New Meetup</title>
+                <meta name="description" content="Add a new meetup here!" />
+            </Head>
+
+            <NewMeetupForm onAddMeetup={addMeetupHandler} />
+        </>
     );
 };
 

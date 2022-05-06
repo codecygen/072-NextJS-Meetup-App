@@ -20,6 +20,8 @@ Keywords:
 - Next-Env-Variables-For-Server-Side
 - Next-MongoDB-Insert-Data
 - Next-HTTP-Request-Treated-As-Backend-Code-And-Hidden-From-Client-For-Database-Request-If-Put-Inside-getStaticProps()-Or-getServerSideProps()-Or-getStaticPaths()
+- Next-Adding-Head-Tag-To-Project-For-SEO
+- Next-Adding-Head-Tag-To-Project-For-SEO-Dynamic-Title-Tag-Changes
 
 Highlights:
 - getStaticProps is good for SEO. getStaticProps is a reserved name.Next.js will look for this function and executes it during the pre-rendering process and prepare the HTML file with data instead of rendering it inside the client's browser.
