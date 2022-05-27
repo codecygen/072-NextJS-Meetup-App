@@ -12,6 +12,12 @@ function MeetupItem(props) {
     // Next-ReRouting-To-Other-Dynamic-Or-Static-Link-useRouter-Hook
     // with push() method we can go back.
     // with replace() method we cannot go back.
+
+    // Alternatively,
+    // router.push({
+      // pathname: '/clients/[id]/[clientprojectid]',
+      // query: { id: 'max', clientprojectid: 'projecta' },
+    // });
     router.push(`/${props.id}`);
   };
 
