@@ -34,12 +34,20 @@ Highlights:
 
 - MongoDB Atlas is used in this project.
 
-- Environmental variable file is named as ".env.local" and stored in the root directory of the project. The file is excluded in ".gitignore" and the variables inside can only be accessed by the Backend files folder "/pages/api/*". The example content of the .env.local file is given down below.
+- Environmental variable file is named as ".env.local" and stored in the root directory of the project. The file is excluded in ".gitignore" and the variables inside can only be accessed by the Backend files folder "/pages/api/*". The example content of the .env.local file is given down below. If getStaticProps does not pull the items, simply restart the server.
 
 ```
 // .env.local
 MONGODB_ATLAS_USER="example-user"
 MONGODB_ATLAS_PASSWORD="example-pass"
+```
+
+or
+
+```
+// .env.local
+MONGODB_ATLAS_USER=example-user
+MONGODB_ATLAS_PASSWORD=example-pass
 ```
 
 - Codes inside the getStaticProps() and getServerSideProps() are also not exposed on the client side in a Next.js app. Sometimes it could be necessary to eliminate an extra HTTP request to the backend. When you include MongoClient library in front end file, despite it is included in front end file, it will be bundled as backend library by Next.js for security purposes. This is a smart feature for Next.js
